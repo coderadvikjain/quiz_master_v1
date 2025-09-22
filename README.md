@@ -46,11 +46,34 @@ admin can see users which registered themself for preparation.
 
 ## Installation Guide
 
-To run the application install create a virtual environment by using ‘python -m venv venv'
-Now, enable created the environment you have, by running “venv\Scripts\activate” command on terminal.
-After creating a virtual environment, run command 'pip install -r requirements.txt' and then all required packages will be installed. and then run the “app.py” file using the “python” command on the terminal. 
-               Or
-Simply, run command 'pip install -r requirements.txt' and then all required packages will be installed. and then run the “app.py” file using the “python” command on the terminal. 
+To run the application install create a virtual environment by using
+```bash
+python -m venv venv
+```
+Now, enable created the environment you have, by running 
+```powershell
+venv\Scripts\activate
+```
+After creating a virtual environment, run command
+```bash
+pip install -r requirements.txt
+```
+and all required packages will be installed. and then run
+```bash
+python app.py
+````
+on the terminal. 
+<h3><b>OR</b></h3>
+
+Simply, run command
+```bash
+pip install -r requirements.txt
+```
+and then all required packages will be installed. and then run the
+``` powershell
+python app.py
+```
+on the terminal. 
 
 <p align="right">(<a href="#readme">go to top</a>)</p>
 
