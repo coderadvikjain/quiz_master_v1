@@ -55,18 +55,18 @@ Now, enable created the environment you have, by running
 venv\Scripts\activate
 ```
 After creating a virtual environment, run command
-```bash
+```powershell
 pip install -r requirements.txt
 ```
 and all required packages will be installed. and then run
-```bash
+```powershell
 python app.py
 ````
 on the terminal. 
 <h3><b>OR</b></h3>
 
 Simply, run command
-```bash
+```powershell
 pip install -r requirements.txt
 ```
 and then all required packages will be installed. and then run the
@@ -80,11 +80,13 @@ on the terminal.
 ## Usage
 
 The app has two types of roles:
-1. User : By registering, anyone can get a user role, with user role users can explore quizzes that are available, attempt a quiz, can see there scores after completion.
+1. User : By registering, users can explore quizzes that are available, attempt a quiz, can see there scores after completion.
 2. Admin : Admin can only be added in the backend (auto created when database is setup), admin can login as normal users and they will be redirected to the admin page. With an admin role, admin can have CRUD control over courses, chapters, quizzes and questions.
 admin can see users which registered themself for preparation.
 
-default admin credentials is username: 'admin' and password is 'iitm@1705'
+Admin credentials is:
+- Username: ```admin``` 
+- Password is ```iitm@1705```
 
 <p align="right">(<a href="#readme">go to top</a>)</p>
 
