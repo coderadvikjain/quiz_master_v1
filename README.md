@@ -70,8 +70,8 @@ default admin credentials is username: 'admin' and password is 'iitm@1705'
 
 ## Contact
 
-Jatin Nahata - 23f2001705@ds.study.iitm.ac.in
+Jatin Nahata - jatinnahatajain24@gmail.com
 
-Project Report: [Project Report](https://github.com/23f2001705/quiz_master_v1/blob/main/Project%20Report.pdf)
+Project Report: [Project Report](https://github.com/coderadvikjain/quiz_master_v1/blob/main/Project%20Report.pdf)
 
 <p align="right">(<a href="#readme">go to top</a>)</p>
