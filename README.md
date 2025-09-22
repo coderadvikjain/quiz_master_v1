@@ -1,7 +1,4 @@
-## Readme
-
- 
-  <h3 align="center">MAD1 Project </h3>
+<h3 align="center">MAD1 Project </h3>
 </div>
 
 <details>
