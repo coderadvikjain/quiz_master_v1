@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/favicon.ico" type="image/quiz_master-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Register - Quest Mantra</title>
+</head>
+<body>
+    <section class="d-flex justify-content-center align-items-center vh-100 position-relative overflow-hidden">
+        <img src="/static/images/bg.jpg" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" alt="Background">
+        <div class="bg-light bg-opacity-25 rounded-4 p-5 shadow-lg" style="backdrop-filter: blur(15px);">
+            <h2 class="text-center fw-bold mb-4 text-light">Register</h2>
+            <form method="POST" action="/register">
+                <div class="mb-3">
+                    <label for="username" class="form-label text-light">Username</label>
+                    <input type="text" name="username" placeholder="Username" class="form-control " required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label text-light">Password</label>
+                    <input type="password" name="password" placeholder="Password" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="full_name" class="form-label text-light">Full Name</label>
+                    <input type="text" name="full_name" placeholder="Full Name" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="qualification" class="form-label text-light">Qualification</label>
+                    <select id="qualification" name="qualification" class="form-select" required>
+                        <option value="" disabled selected>Qualification</option>
+                        <option value="High School">High School</option>
+                        <option value="Undergraduate">Bachelor's in Data Science & Programming</option>
+                        <option value="Postgraduate">Master's in Data Science & Programming</option>
+                        <option value="Professional/PhD">PhD in Data Science & Programming</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dob" class="form-label text-light">Date of Birth</label>
+                        <input type="date" id="dob" name="dob" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Register</button>
+                <div class="text-center mt-3">
+                    <p class="fw-bold mb-0 text-dark"><p>Already have an account? <a href="/login" class="text-decoration-none text-light fw-bold">Login</a></p>
+                </div>
+            </form>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages mt-3">
+                    {% for category, message in messages %}
+                        <div class="flash-message {{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        </div>
+    </section>
+</body>
+</html>

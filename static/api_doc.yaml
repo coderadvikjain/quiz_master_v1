@@ -1,0 +1,212 @@
+openapi: 3.0.0
+info:
+  title: Quest Mantra - OpenAPI 1.0
+  description: |-
+    <div>It is a multi-user app that acts as an exam preparation site for multiple courses.
+    <h3>General instructions:</h3>
+    <ol> 
+      <li>Use the API in a fair and ethical manner. Avoid overloading the system with<br>excessive requests that could negatively affect the performance for other users.</li>
+      <li>Ensure that you are properly authenticated before making requests.
+      <br>Keep your API keys or tokens secure and do not share them publicly.</li>
+      <li>Adhere to the defined rate limits for each endpoint to prevent service disruption.<br>Be mindful of your API usage and avoid unnecessary repetitive requests.</li>
+      <li>Do not misuse any data obtained from the API. Respect user privacy and <br>ensure compliance with relevant data protection laws, such as GDPR or CCPA.</li>
+      <li>Refrain from using the API for malicious purposes, including but not limited to<br>spamming, hacking, or any other harmful activity.</li>
+      <li>If you encounter errors, handle them gracefully in your application. <br>Refer to the documentation for troubleshooting common issues.</li>
+      <li>For any issues or inquiries, reach out to our support team through the <br>contact details provided in the documentation.</li>
+      <li>By using this API, you agree to comply with the platform's terms of service.<br>Any violation may result in temporary or permanent access restrictions.</li>
+    </ol>
+    </div>
+  contact:
+    email: 23f2001705@ds.study.iitm.ac.in
+  version: 1.0.0
+servers:
+  - url: http://127.0.0.1:5000/
+paths:
+  /api/register:
+    description: Url to create a user
+
+    post:
+      summary: Create a user
+      description: Operation to create a new user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  example: advik
+                password:
+                  type: string
+                  example: qwer1234
+                full_name:
+                  type: string
+                  example: Advik
+                qualification:
+                  type: string
+                  example: Undergraduate
+                dob:
+                  type: string
+                  example: 2000-10-14
+      responses:
+        '201':
+          description: User registered successfully!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 2
+                  username:
+                    type: string
+                    example: advik
+                  password:
+                    type: string
+                    example: qwer1234
+                  full_name:
+                    type: string
+                    example: Advik
+                  qualification:
+                    type: string
+                    example: Undergraduate
+                  dob:
+                    type: string
+                    example: 25-10-2000
+        '409':
+          description: username already exists
+        '400':
+          description: Missing required fields (username, password, full_name)
+
+  /api/subjects:
+    description: Url to get all the available subjects.
+    
+    get:
+      summary: Find all Subjects
+      description: Operation to get all subjects
+      responses:
+        '200':
+          description: Request Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: PDSA
+                  description:
+                    type: string
+                    example: Course description
+        '404':
+          description: No subject found
+          
+  /api/subject/{subject_id}/chapters:
+    description: Url to get all the chapters of a subject
+    get:
+      summary: Find Chapters of a subject
+      description: Operation to get all the chapters of a subject
+      parameters:
+        - name: subject_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Request Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: Arrays and Lists
+                  description:
+                    type: string
+                    example: Chapter description
+        '400':
+          description: No chapters found for the given subject
+          
+  /api/chapter/{chapter_id}/quizzes:
+    description: Url to get quizzes of a chapter
+    get:
+      summary: Find Quizzes of a chapter
+      description: Operation to get quizzes of a chapter
+      parameters:
+        - name: chapter_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Request Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  date_of_quiz:
+                    type: string
+                    example: 2025-01-01
+                  duration:
+                    type: integer
+                    example: 5
+        '400':
+          description: No quizzes found for the given chapter
+          
+  /api/quiz/{quiz_id}/questions:
+    description: Url to get questions of a quiz
+    get:
+      summary: Find Questions of a quiz
+      description: Operation to get questions of a quiz
+      parameters:
+        - name: quiz_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Request Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  statement:
+                    type: string
+                    example: Question Statement
+                  option1:
+                    type: string
+                    example: option 1
+                  option2:
+                    type: string
+                    example: option 2
+                  option3:
+                    type: string
+                    example: option 3
+                  option4:
+                    type: string
+                    example: option 4
+                  correct_option:
+                    type: integer
+                    example: 3
+        '400':
+          description: No questions found for the given quiz

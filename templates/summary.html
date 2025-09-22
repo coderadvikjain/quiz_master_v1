@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Summary</title>
+    <link rel="icon" href="/static/favicon.ico" type="image/quiz_master-icon">
+    <script src="https://kit.fontawesome.com/6179833cb5.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/style/summary.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="p-4">
+    <div class="position-fixed top-0 start-0 end-0 bg-light bg-opacity-55 rounded-4 py-2 text-center shadow">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="/dashboard"><img src="/static/logo.png" class="logo"></a>
+                <nav class="d-flex">
+                    <a href="/dashboard" class="nav-link text-decoration-none me-3">Home</a>
+                    <a href="/scores" class="nav-link text-decoration-none me-3">Scores</a>
+                    <a href="/summary" class="nav-link active text-decoration-none nav-link">Summary</a>
+                </nav>
+                <div class="d-flex align-items-center">
+                    <form action="/search" method="GET" class="d-flex align-items-center">
+                        <input type="text" name="query" placeholder="Search" class="form-control rounded-pill ms-3" required>
+                        <button class="btn rounded-circle me-5 " type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                    <span class="text-dark fw-bold">Welcome {{ full_name }}</span>
+                    <a href="/logout" class="btn btn-danger ms-3 rounded-pill">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div><br><br><br>
+    <div id="chart-container"></div>
+    
+    <script>
+        let quizNames = {{ quiz_names | tojson | safe }};
+        let totalQuestions = {{ total_questions | tojson | safe }};
+        let correctAnswers = {{ quiz_scores | tojson | safe }};
+    
+        quizNames.forEach((quizName, index) => {
+            let incorrectAnswers = totalQuestions[index] - correctAnswers[index];
+    
+            const chartWrapper = document.createElement('div');
+            chartWrapper.classList.add('chart-container');
+    
+            chartWrapper.innerHTML = `<h5>${quizName}</h5><canvas id="quizChart-${index}" width="400" height="400"></canvas>`;
+    
+            document.getElementById('chart-container').appendChild(chartWrapper);
+    
+            const ctx = document.getElementById(`quizChart-${index}`).getContext('2d');
+    
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Correct Answers', 'Incorrect Answers'],
+                    datasets: [{
+                        label: 'Your Score',
+                        data: [correctAnswers[index], incorrectAnswers],
+                        backgroundColor: ['#006400', '#8B0000'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        tooltip: {
+                            enabled: true,
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                    const percentage = (tooltipItem.raw / totalQuestions[index]) * 100;
+                                    return `${tooltipItem.label}: ${tooltipItem.raw} / ${totalQuestions[index]} (${percentage.toFixed(1)}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+    <footer class="text-center py-3 mt-4 text-muted">
+        Made with <i class="fas fa-heart text-danger"></i> by Jatin Nahata
+    </footer>
+</body>
+</html>

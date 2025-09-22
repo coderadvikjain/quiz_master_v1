@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="icon" href="/static/favicon.ico" type="image/quiz_master-icon">
+    <script src="https://kit.fontawesome.com/6179833cb5.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="//unpkg.com/swagger-ui-dist@3/swagger-ui.css">
+    <script src="//unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 col-12">
+                <div id="swagger-ui"></div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center mt-4">
+        <a href="/" class="btn btn-primary text-center">Go to Dashboard</a>
+    </div>
+
+    <script>
+        window.onload = function () {
+
+            const ui = SwaggerUIBundle({
+                url: "{{ url_for('static', filename='api_doc.yaml') }}",
+                dom_id: '#swagger-ui',
+                deepLinking: true,
+            });
+        }
+    </script>
+    <footer class="text-center py-3 mt-4 text-muted">
+        Made with <i class="fas fa-heart text-danger"></i> by Jatin Nahata
+    </footer>
+</body>
+</html>

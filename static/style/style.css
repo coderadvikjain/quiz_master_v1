@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', Raleway;
+    font-size: 1em;
+}
+
+.logo {
+    height: 65px;
+}
+.nav-link {
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+    color: rgb(208, 0, 255) !important;
+}
+
+.hero-section {
+    position: relative;
+    background-image: url('/static/images/indexbg.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-section .container {
+    text-align: center;
+    z-index: 2;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-section p {
+    font-size: 1.25rem;
+    margin-bottom: 40px;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+#contact {
+    padding: 60px 0;
+    background-color: #ffffff;
+}
+
+.footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}

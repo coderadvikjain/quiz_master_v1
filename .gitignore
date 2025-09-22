@@ -1,0 +1,15 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.swp
+# Virtual environment
+venv/
+.env/
+.venv/
+# Instance folder
+instance/
+# VS Code
+.vscode/
+# Logs and database files
+*.log
+*.sqlite3
